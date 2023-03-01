@@ -27,6 +27,8 @@ class RouteServiceProvider extends ServiceProvider
         $this->configureRateLimiting();
 
         $this->routes(function () {
+            Route::pattern('id', '[0-9]+');
+            Route::pattern('slug', '^[a-zA-Z0-9_-]+$');
             Route::middleware('api')
                 ->prefix('api')
                 ->group(base_path('routes/api.php'));
