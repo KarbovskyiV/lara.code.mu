@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,13 +37,10 @@ Route::get('/city/{city?}', function ($city = 'Kyiv') {
     return 'City ' . $city;
 })->whereAlpha('city');
 
-Route::get('/user/{id}', function ($id) {
-    return 'User ' . $id;
-});
-
-Route::get('/post/{slug}', function ($slug) {
-    return 'Post with slug ' . $slug;
-});
+Route::get('/post/{id}', [PostController::class, 'show']);
+Route::get('/user/all', [UserController::class, 'all']);
+Route::get('/user/{name}', [UserController::class, 'show']);
+Route::get('/user/{surname}/{name}', [UserController::class, 'showAll']);
 
 Route::get('/posts/{date}', function ($date) {
     return 'Date ' . $date;
