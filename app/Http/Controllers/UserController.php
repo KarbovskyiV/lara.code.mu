@@ -4,21 +4,12 @@ namespace App\Http\Controllers;
 
 class UserController extends Controller
 {
-    public function show($name)
+    public function show()
     {
-        $users = [
-            'user1' => 'city 1',
-            'user2' => 'city 2',
-            'user3' => 'city 3',
-            'user4' => 'city 4',
-            'user5' => 'city 5',
-        ];
-
-        if (array_key_exists($name, $users)) {
-            return $users[$name];
-        }
-
-        return 'Error';
+        return view('user.show', [
+            'title' => 'User title',
+            'text' => 'User content',
+        ]);
     }
 
     public function all()

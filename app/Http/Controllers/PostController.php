@@ -4,17 +4,12 @@ namespace App\Http\Controllers;
 
 class PostController extends Controller
 {
-    public function show($id)
+    public function show()
     {
-        $posts = [
-            1 => 'Post 1',
-            2 => 'Post 2',
-            3 => 'Post 3',
-            4 => 'Post 4',
-            5 => 'Post 5',
-        ];
-
-        return $posts[$id];
+        return view('post.show', [
+            'title' => 'Post title',
+            'text' => 'Post content',
+        ]);
     }
 
     public function all()

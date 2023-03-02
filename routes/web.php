@@ -37,9 +37,9 @@ Route::get('/city/{city?}', function ($city = 'Kyiv') {
     return 'City ' . $city;
 })->whereAlpha('city');
 
-Route::get('/post/{id}', [PostController::class, 'show']);
+Route::get('/post', [PostController::class, 'show']);
 Route::get('/user/all', [UserController::class, 'all']);
-Route::get('/user/{name}', [UserController::class, 'show']);
+Route::get('/user', [UserController::class, 'show']);
 Route::get('/user/{surname}/{name}', [UserController::class, 'showAll']);
 
 Route::get('/posts/{date}', function ($date) {
