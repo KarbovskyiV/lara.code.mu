@@ -12,11 +12,10 @@ return new class extends Migration {
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->integer('votes')->unsigned();
-            $table->string('name', 100);
-            $table->text('text');
-            $table->dateTime('created_at');
-            $table->timestamp('added_on');
+            $table->string('title', 100);
+            $table->string('slug', 100);
+            $table->integer('likes');
+            $table->timestamps();
         });
     }
 
