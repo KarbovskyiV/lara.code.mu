@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
+
 class PostController extends Controller
 {
     public function show()
@@ -76,6 +78,20 @@ class PostController extends Controller
 
     public function all()
     {
-        return 'Post all show';
+        $posts = DB::table('posts')
+            ->where('id', '=', 3)
+            ->orWhere(function ($query) {
+                $query
+                    ->where('likes', '>', 10)
+                    ->where('likes', '<', 50);
+            })
+            ->get();
+        $titles = DB::table('posts')
+            ->where('id', '>', '3')
+            ->pluck('title');
+        return view('post.all', [
+            'posts' => $posts,
+            'titles' => $titles,
+        ]);
     }
 }

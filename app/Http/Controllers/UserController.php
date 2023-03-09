@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
+
 class UserController extends Controller
 {
     public function show()
@@ -111,7 +113,11 @@ class UserController extends Controller
 
     public function all()
     {
-        return "User all";
+        $names = DB::table('users')->leftJoin('cities', 'cities.id', '=', 'users.city_id')->get();
+
+        return view('user.all', [
+            'names' => $names,
+        ]);
     }
 
     public function showAll($surname, $name)
