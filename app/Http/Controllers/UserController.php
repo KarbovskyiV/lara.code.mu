@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
@@ -113,11 +114,9 @@ class UserController extends Controller
 
     public function all()
     {
-        $names = DB::table('users')->leftJoin('cities', 'cities.id', '=', 'users.city_id')->get();
-
-        return view('user.all', [
-            'names' => $names,
-        ]);
+        User::withTrashed()
+            ->where('id', 9)
+            ->restore();
     }
 
     public function showAll($surname, $name)
