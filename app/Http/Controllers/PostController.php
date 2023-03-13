@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -79,6 +78,11 @@ class PostController extends Controller
 
     public function all()
     {
-        Post::find(1)->delete();
+        $posts = Post::all();
+
+        foreach ($posts as $post) {
+            dump($post->thumbnail->path);
+            dump($post->thumbnail->alt);
+        }
     }
 }

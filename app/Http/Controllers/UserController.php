@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -114,9 +113,10 @@ class UserController extends Controller
 
     public function all()
     {
-        User::withTrashed()
-            ->where('id', 9)
-            ->restore();
+        $users = User::all();
+        return view('user.all', [
+            'users' => $users
+        ]);
     }
 
     public function showAll($surname, $name)
