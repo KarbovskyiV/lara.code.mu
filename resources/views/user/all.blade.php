@@ -5,19 +5,15 @@
 
     <table>
         <tr>
-            <th>#</th>
             <th>Name</th>
+            <th>Surname</th>
             <th>Email</th>
-            <th>Age</th>
-            <th>Salary</th>
         </tr>
         @foreach($users as $user)
             <tr>
-                <td>{{ $user->id }}</td>
-                <td>{{ $user->name }}</td>
-                <td>{{ $user->email }}</td>
-                <td>{{ $user->age }}</td>
-                <td>{{ $user->salary }}</td>
+                <td>{{ $user->profile->name }}</td>
+                <td>{{ $user->profile->surname }}</td>
+                <td>{{ $user->profile->email }}</td>
             </tr>
         @endforeach
     </table>
