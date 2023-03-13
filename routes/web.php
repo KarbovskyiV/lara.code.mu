@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\CityController;
+use App\Http\Controllers\CountryController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ThumbnailController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,10 +37,11 @@ Route::prefix('admin')->group(function () {
     });
 });
 
-Route::get('/city/{city?}', function ($city = 'Kyiv') {
-    return 'City ' . $city;
-})->whereAlpha('city');
-
+Route::get('/city', [CityController::class, 'show']);
+Route::get('/country', [CountryController::class, 'show']);
+Route::get('/country/all', [CountryController::class, 'all']);
+Route::get('/thumbnail/all', [ThumbnailController::class, 'all']);
+Route::get('/profile/all', [ProfileController::class, 'all']);
 Route::get('/post', [PostController::class, 'show']);
 Route::get('/post/all', [PostController::class, 'all']);
 Route::get('/user/all', [UserController::class, 'all']);
