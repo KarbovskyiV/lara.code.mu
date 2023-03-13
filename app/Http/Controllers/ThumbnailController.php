@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Thumbnail;
-use Illuminate\Http\Request;
 
 class ThumbnailController extends Controller
 {
