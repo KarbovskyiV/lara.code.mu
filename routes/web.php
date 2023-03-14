@@ -4,6 +4,7 @@ use App\Http\Controllers\CityController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ThumbnailController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -37,6 +38,7 @@ Route::prefix('admin')->group(function () {
     });
 });
 
+Route::get('/role', [RoleController::class, 'show']);
 Route::get('/city', [CityController::class, 'show']);
 Route::get('/country', [CountryController::class, 'show']);
 Route::get('/country/all', [CountryController::class, 'all']);
