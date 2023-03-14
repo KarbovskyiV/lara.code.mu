@@ -10,6 +10,8 @@ class Country extends Model
 {
     use HasFactory;
 
+    protected $with = ['cities'];
+
     public function cities(): HasMany
     {
         return $this->hasMany(City::class);
