@@ -9,12 +9,10 @@
             <th>Surname</th>
             <th>Email</th>
         </tr>
+
         @foreach($users as $user)
-            <tr>
-                <td>{{ $user->profile->name }}</td>
-                <td>{{ $user->profile->surname }}</td>
-                <td>{{ $user->profile->email }}</td>
-            </tr>
+            {{ dump($user->roles) }}
         @endforeach
+
     </table>
 </x-layout>
