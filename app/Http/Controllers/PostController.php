@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -74,6 +75,35 @@ class PostController extends Controller
             'users' => [],
 
         ]);
+    }
+
+    public function form(Request $request)
+    {
+        echo $request->fullUrl();
+
+        return view('post.form', [
+
+        ]);
+    }
+
+    public function result(Request $request)
+    {
+        $name = $request->input('name');
+        $age = $request->input('age');
+        $salary = $request->input('salary');
+
+        return view('post.result', [
+            'name' => $name,
+            'age' => $age,
+            'salary' => $salary,
+        ]);
+    }
+
+    public function test(Request $request)
+    {
+        echo $request->path();
+        echo $request->url();
+        echo $request->fullUrl();
     }
 
     public function all()
