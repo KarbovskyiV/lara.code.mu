@@ -51,7 +51,7 @@ Route::get('/test/method', [PostController::class, 'test']);
 Route::get('/post/all', [PostController::class, 'all']);
 Route::get('/user/all', [UserController::class, 'all']);
 Route::get('/user', [UserController::class, 'show']);
-Route::get('/user/{surname}/{name}', [UserController::class, 'showAll']);
+Route::get('/users', [UserController::class, 'showAll']);
 
 Route::get('/posts/{date}', function ($date) {
     return 'Date ' . $date;
