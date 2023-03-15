@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -120,8 +121,10 @@ class UserController extends Controller
         ]);
     }
 
-    public function showAll($surname, $name)
+    public function showAll()
     {
-        return "$surname $name";
+        return view('user.showAll', [
+            'users' => DB::table('users')->orderBy('age')->paginate(5)
+        ]);
     }
 }
