@@ -115,7 +115,7 @@ class UserController extends Controller
 
     public function all()
     {
-        $users = User::orderBy('age', 'desc')->paginate(5);
+        $users = User::paginate(5);
 
         return view('user.all', [
             'users' => $users
