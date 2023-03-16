@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
@@ -114,7 +115,7 @@ class UserController extends Controller
 
     public function all()
     {
-        $users = User::all();
+        $users = User::orderBy('age', 'desc')->paginate(5);
 
         return view('user.all', [
             'users' => $users
@@ -126,5 +127,57 @@ class UserController extends Controller
         return view('user.showAll', [
             'users' => DB::table('users')->orderBy('age')->paginate(5)
         ]);
+    }
+
+    public function form()
+    {
+        return view('user.form');
+    }
+
+    public function submit(Request $request)
+    {
+        $city_id = $request->input('city_id');
+        $login = $request->input('login');
+        $password = $request->input('password');
+        $name = $request->input('name');
+        $email = $request->input('email');
+        $age = $request->input('age');
+        $salary = $request->input('salary');
+
+        DB::table('users')->insert([
+            'city_id' => $city_id,
+            'login' => $login,
+            'password' => $password,
+            'name' => $name,
+            'email' => $email,
+            'age' => $age,
+            'salary' => $salary,
+        ]);
+
+        return redirect('user/all');
+    }
+
+    public function destroy(User $user)
+    {
+        $user->delete();
+        return redirect('/user/all')->with('success', 'User deleted successfully');
+    }
+
+    public function edit($id)
+    {
+        $user = User::find($id);
+
+        return view('user.edit', [
+            'user' => $user
+        ]);
+    }
+
+    public function update(User $id, Request $request)
+    {
+        $item = User::findOrFail($id->id);
+
+        $item->update();
+
+        return redirect('/user/all')->with('success', 'User updated successfully');
     }
 }
