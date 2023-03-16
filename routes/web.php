@@ -9,17 +9,6 @@ use App\Http\Controllers\ThumbnailController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -39,16 +28,22 @@ Route::prefix('admin')->group(function () {
 });
 
 Route::get('/role', [RoleController::class, 'show']);
+
 Route::get('/city', [CityController::class, 'show']);
+
 Route::get('/country', [CountryController::class, 'show']);
 Route::get('/country/all', [CountryController::class, 'all']);
+
 Route::get('/thumbnail/all', [ThumbnailController::class, 'all']);
+
 Route::get('/profile/all', [ProfileController::class, 'all']);
+
 Route::get('/post', [PostController::class, 'show']);
 Route::match(['get', 'post'], '/form', [PostController::class, 'form']);
 Route::get('/result', [PostController::class, 'result']);
 Route::get('/test/method', [PostController::class, 'test']);
 Route::get('/post/all', [PostController::class, 'all']);
+
 Route::get('/user/all', [UserController::class, 'all']);
 Route::get('/user/form', [UserController::class, 'form']);
 Route::post('/user/submit', [UserController::class, 'submit']);
