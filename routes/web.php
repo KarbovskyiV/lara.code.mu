@@ -50,6 +50,11 @@ Route::get('/result', [PostController::class, 'result']);
 Route::get('/test/method', [PostController::class, 'test']);
 Route::get('/post/all', [PostController::class, 'all']);
 Route::get('/user/all', [UserController::class, 'all']);
+Route::get('/user/form', [UserController::class, 'form']);
+Route::post('/user/submit', [UserController::class, 'submit']);
+Route::put('/user/{id}', [UserController::class, 'update'])->name('user.update');
+Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+Route::get('/user/{user}', [UserController::class, 'edit'])->name('users.edit');
 Route::get('/user', [UserController::class, 'show']);
 Route::get('/users', [UserController::class, 'showAll']);
 
