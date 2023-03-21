@@ -7,7 +7,47 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function show()
+    public function index()
+    {
+        return 'All posts';
+    }
+
+    public function create()
+    {
+        return 'Create post';
+    }
+
+    public function store()
+    {
+        return 'Request create post';
+    }
+
+    public function show($post)
+    {
+        return "Show post №{$post}";
+    }
+
+    public function edit($post)
+    {
+        return "Edit post №{$post}";
+    }
+
+    public function update()
+    {
+        return 'Request edit post';
+    }
+
+    public function delete()
+    {
+        return 'Delete post';
+    }
+
+    public function like()
+    {
+        return 'Like + 1';
+    }
+
+    public function show2()
     {
         return view('post.show', [
             'title' => 'Post title',
