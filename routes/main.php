@@ -13,7 +13,7 @@ use App\Http\Controllers\User\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'welcome');
+Route::view('/', 'welcome')->name('home');
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
@@ -25,24 +25,12 @@ Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 Route::get('/blog/{post}', [BlogController::class, 'show'])->name('blog.show');
 Route::post('/blog/{post}/like', [BlogController::class, 'like'])->name('blog.like');
 
-
-Route::prefix('admin')->group(function () {
-    Route::get('/posts', [PostController::class, 'index'])->name('admin.posts');
-    Route::get('/posts/create', [PostController::class, 'create'])->name('admin.posts.create');
-    Route::post('/posts', [PostController::class, 'store'])->name('admin.posts.store');
-    Route::get('/posts/{post}', [PostController::class, 'show'])->name('admin.posts.show');
-    Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('admin.posts.edit');
-    Route::put('/posts/{post}', [PostController::class, 'update'])->name('admin.posts.update');
-    Route::delete('/posts/{post}', [PostController::class, 'delete'])->name('admin.posts.delete');
-    Route::put('/posts/{post}/like', [PostController::class, 'like'])->name('admin.posts.like');
-});
-
 Route::resource('posts/{post}/comments', CommentController::class)->only([
     'index',
     'show',
 ]);
 
-Route::redirect('/home', '/');
+Route::redirect('/home', '/')->name('home.redirect');
 
 Route::get('/user/profile', function () {
     return 'profile';
@@ -80,7 +68,7 @@ Route::get('/user/form', [UserController::class, 'form']);
 Route::post('/user/submit', [UserController::class, 'submit']);
 Route::put('/user/{id}', [UserController::class, 'update'])->name('user.update');
 Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
-Route::get('/user/{user}', [UserController::class, 'edit'])->name('users.edit');
+Route::get('/user/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
 Route::get('/user', [UserController::class, 'show']);
 Route::get('/users', [UserController::class, 'showAll']);
 
