@@ -10,12 +10,20 @@ class PostController extends Controller
 {
     public function index()
     {
-        return 'All posts';
+        $post = (object)[
+            'id' => 123,
+            'title' => 'Lorem ipsum dolor sit amet.',
+            'content' => 'Lorem ipsum <strong>dolor</strong> sit amet, consectetur adipisicing elit. Eligendi, eos!'
+        ];
+
+        $posts = array_fill(0, 10, $post);
+
+        return view('user.posts.index', compact('posts'));
     }
 
     public function create()
     {
-        return 'Create post';
+        return view('user.posts.create');
     }
 
     public function store()
@@ -25,12 +33,24 @@ class PostController extends Controller
 
     public function show($post)
     {
-        return "Show post №{$post}";
+        $post = (object)[
+            'id' => 123,
+            'title' => 'Lorem ipsum dolor sit amet.',
+            'content' => 'Lorem ipsum <strong>dolor</strong> sit amet, consectetur adipisicing elit. Eligendi, eos!'
+        ];
+
+        return view('user.posts.show', compact('post'));
     }
 
     public function edit($post)
     {
-        return "Edit post №{$post}";
+        $post = (object)[
+            'id' => 123,
+            'title' => 'Lorem ipsum dolor sit amet.',
+            'content' => 'Lorem ipsum <strong>dolor</strong> sit amet, consectetur adipisicing elit. Eligendi, eos!'
+        ];
+
+        return view('user.posts.edit', compact('post'));
     }
 
     public function update()
