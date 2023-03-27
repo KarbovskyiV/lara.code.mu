@@ -13,12 +13,16 @@ class LoginController extends Controller
 
     public function store(Request $request)
     {
-        $email = $request->input('email');
-        $password = $request->input('password');
-        $remember = $request->boolean('remember');
+//        $email = $request->input('email');
+//        $password = $request->input('password');
+//        $remember = $request->boolean('remember');
+//
+//        dd($email, $password, $remember);
 
-        dd($email, $password, $remember);
+        if (true) {
+            return redirect()->back()->withInput();
+        }
 
-        return 'Store login';
+        return redirect()->route('user');
     }
 }

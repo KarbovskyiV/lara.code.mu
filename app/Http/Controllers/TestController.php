@@ -9,8 +9,8 @@ class TestController extends Controller
         $this->middleware('throttle:10');
     }
 
-    public function __invoke(): string
+    public function __invoke()
     {
-        return 'Test';
+        return response()->json(['foo' => 'bar']);
     }
 }
