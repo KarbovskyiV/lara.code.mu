@@ -2,7 +2,7 @@
     'post' => null,
 ])
 
-<x-form {{ $attributes }} method="post">
+<x-form {{ $attributes }}>
     <x-form-item>
         <x-label required>{{ __('Post name') }}</x-label>
         <x-input name="title" value="{{ $post->title ?? '' }}" autofocus/>
