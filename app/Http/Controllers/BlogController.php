@@ -12,8 +12,6 @@ class BlogController extends Controller
         $search = $request->input('search');
         $category_id = $request->input('category_id');
 
-//        dd($search, $category_id);
-
         $post = (object)[
             'id' => 123,
             'title' => 'Lorem ipsum dolor sit amet.',
@@ -31,7 +29,6 @@ class BlogController extends Controller
             if ($category_id && $post->category_id != $category_id) {
                 return false;
             }
-
 
             return true;
         });
