@@ -4,14 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Post extends Model
 {
     use HasFactory;
 
-    public function thumbnail(): HasOne
-    {
-        return $this->hasOne(Thumbnail::class);
-    }
+    protected $fillable = [
+        'user_id',
+        'title',
+        'content',
+        'published',
+        'published_at',
+    ];
+
+    protected $casts = [
+        'published' => 'boolean',
+        'published_at' => 'datetime',
+    ];
 }
