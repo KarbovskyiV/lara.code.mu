@@ -10,10 +10,17 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('cities', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->timestamps();
+
+            $table->foreignId('user_id')->constrained();
+
+            $table->string('title');
+            $table->text('content');
+
+            $table->boolean('published')->default(true);
+            $table->timestamp('published_at')->nullable();
         });
     }
 
@@ -22,6 +29,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('cities');
+        Schema::dropIfExists('posts');
     }
 };

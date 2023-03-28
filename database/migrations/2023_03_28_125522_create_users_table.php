@@ -10,13 +10,17 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 100);
-            $table->string('slug', 100);
-            $table->longText('text');
-            $table->integer('likes');
             $table->timestamps();
+
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('avatar')->nullable();
+            $table->boolean('active')->default(true)->comment('banned user or not');
+
+            $table->string('password');
+            $table->rememberToken();
         });
     }
 
@@ -25,6 +29,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('users');
     }
 };
