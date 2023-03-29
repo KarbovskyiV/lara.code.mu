@@ -6,11 +6,13 @@
     <x-form-item>
         <x-label required>{{ __('Post name') }}</x-label>
         <x-input name="title" value="{{ $post->title ?? '' }}" autofocus/>
+        <x-error name="title"/>
     </x-form-item>
 
     <x-form-item>
         <x-label required>{{ __('Post content') }}</x-label>
         <x-trix name="content" value="{{ $post->content ?? '' }}"/>
+        <x-error name="content"/>
     </x-form-item>
 
     {{ $slot }}
