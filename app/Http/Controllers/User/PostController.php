@@ -28,10 +28,10 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-//        $title = $request->input('title');
-//        $content = $request->input('content');
-//
-//        dd($title, $content);
+        $request->validate([
+            'title' => ['required', 'string', 'max:100'],
+            'content' => ['required', 'string'],
+        ]);
 
         alert(__('Saved'));
 
@@ -62,10 +62,10 @@ class PostController extends Controller
 
     public function update(Request $request, $post)
     {
-//        $title = $request->input('title');
-//        $content = $request->input('content');
-//
-//        dd($title, $content);
+        $request->validate([
+            'title' => ['required', 'string', 'max:100'],
+            'content' => ['required', 'string'],
+        ]);
 
         alert(__('Saved'));
 
