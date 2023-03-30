@@ -17,6 +17,8 @@
         </x-card-header>
 
         <x-card-body>
+            <x-errors/>
+
             <x-form action="{{ route('register.store') }}" method="post">
                 <x-form-item>
                     <x-label required>{{ __('Name') }}</x-label>
