@@ -4,12 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * @property string $name
+ * @property string $email
+ * @property string $avatar
+ * @property string $password
+ * @property bool $active
+ * @property bool $admin
+ */
 class User extends Model
 {
     use HasFactory;
-    use SoftDeletes;
 
     protected $fillable = [
         'name',
