@@ -3,6 +3,7 @@
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\BookmakerController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Posts\CommentController;
 use App\Http\Controllers\ProfileController;
@@ -25,6 +26,8 @@ Route::middleware('guest')->group(function () {
 
     Route::get('/login', [LoginController::class, 'index'])->name('login');
     Route::post('/login', [LoginController::class, 'store'])->name('login.store');
+
+    Route::get('/bookmaker', [BookmakerController::class, 'index'])->name('bookmaker');
 });
 
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
