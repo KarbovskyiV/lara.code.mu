@@ -22,6 +22,12 @@
                         {{ __('Blog') }}
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('bookmaker') }}" class="nav-link {{ active_link('bookmaker') }}" aria-current="page">
+                        {{ __('Bookmaker') }}
+                    </a>
+                </li>
             </ul>
 
             <ul class="navbar-nav ms-auto mb-2 mb-md-0">
